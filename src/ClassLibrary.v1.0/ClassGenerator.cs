@@ -18,29 +18,29 @@ namespace ClassLibrary
                 throw new ArgumentNullException(nameof(settings));
 
             var sb = new StringBuilder();
-            sb.AppendLine("using System;");
-            sb.AppendLine("using System.Collections.Generic;");
-            sb.AppendLine();
-            sb.AppendLine($"namespace {module.Namespace}");
-            sb.AppendLine("{");
-            sb.Indent(1).AppendLine($"public class {model.Name}Response");
-            sb.Indent(1).AppendLine("{");
+            sb.al("using System;");
+            sb.al("using System.Collections.Generic;");
+            sb.b();
+            sb.al($"namespace {module.Namespace}");
+            sb.al("{");
+            sb.i(1).al($"public class {model.Name}Response");
+            sb.i(1).al("{");
 
             foreach (var item in model.Key.Fields)
             {
-                sb.Indent(2).Append($"public {item.DataType} {item.Name} {{ get; set; }}");
-                sb.AppendLine();
+                sb.i(2).a($"public {item.DataType} {item.Name} {{ get; set; }}");
+                sb.b();
             }
 
             foreach (var item in model.Fields)
             {
-                sb.Indent(2).Append($"public {item.DataType} {item.Name} {{ get; set; }}");
-                sb.AppendLine();
+                sb.i(2).a($"public {item.DataType} {item.Name} {{ get; set; }}");
+                sb.b();
             }
 
 
-            sb.Indent(1).AppendLine("}");
-            sb.AppendLine("}");
+            sb.i(1).al("}");
+            sb.al("}");
 
             var file = new File { Content = sb.ToString(), CanOverwrite = settings.SupportRegen };
             var filename = model.Name.ToString();

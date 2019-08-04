@@ -1,0 +1,140 @@
+{
+  "runtimeTarget": {
+    "name": ".NETStandard,Version=v2.0/",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETStandard,Version=v2.0": {},
+    ".NETStandard,Version=v2.0/": {
+      "Header.v1.0/1.0.0": {
+        "dependencies": {
+          "Hy.Modeller.Base": "3.0.23",
+          "NETStandard.Library": "2.0.3"
+        },
+        "runtime": {
+          "Header.v1.0.dll": {}
+        }
+      },
+      "FluentValidation/8.4.0": {
+        "dependencies": {
+          "System.ComponentModel.Annotations": "4.4.1"
+        },
+        "runtime": {
+          "lib/netstandard2.0/FluentValidation.dll": {
+            "assemblyVersion": "8.0.0.0",
+            "fileVersion": "8.4.0.0"
+          }
+        }
+      },
+      "Humanizer.Core/2.6.2": {
+        "runtime": {
+          "lib/netstandard2.0/Humanizer.dll": {
+            "assemblyVersion": "2.6.0.0",
+            "fileVersion": "2.6.2.50817"
+          }
+        }
+      },
+      "Hy.Modeller.Base/3.0.23": {
+        "dependencies": {
+          "FluentValidation": "8.4.0",
+          "Humanizer.Core": "2.6.2",
+          "McMaster.NETCore.Plugins.Sdk": "0.2.4",
+          "Newtonsoft.Json": "12.0.2"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Hy.Modeller.Base.dll": {
+            "assemblyVersion": "3.0.23.0",
+            "fileVersion": "3.0.23.0"
+          }
+        }
+      },
+      "McMaster.NETCore.Plugins.Sdk/0.2.4": {},
+      "Microsoft.NETCore.Platforms/1.1.0": {},
+      "NETStandard.Library/2.0.3": {
+        "dependencies": {
+          "Microsoft.NETCore.Platforms": "1.1.0"
+        }
+      },
+      "Newtonsoft.Json/12.0.2": {
+        "runtime": {
+          "lib/netstandard2.0/Newtonsoft.Json.dll": {
+            "assemblyVersion": "12.0.0.0",
+            "fileVersion": "12.0.2.23222"
+          }
+        }
+      },
+      "System.ComponentModel.Annotations/4.4.1": {
+        "runtime": {
+          "lib/netstandard2.0/System.ComponentModel.Annotations.dll": {
+            "assemblyVersion": "4.2.0.0",
+            "fileVersion": "4.6.25921.2"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Header.v1.0/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "FluentValidation/8.4.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-/VApywgD2sqD3aB1tzub6SIItmwxXN0D5yAiP3kuFHmjYO1W+Ryi531/m4O03/hlfcYrBgewDJn7Jd1Xk0vTdw==",
+      "path": "fluentvalidation/8.4.0",
+      "hashPath": "fluentvalidation.8.4.0.nupkg.sha512"
+    },
+    "Humanizer.Core/2.6.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-17m0EzOAzzXQ387sHqGNIHSCZCrJ9nCwJoJ4jC6oCTG6KHhfbq4V9i/wSbTjNLYPbvrMPSc7MlF1f7qCZwxLdQ==",
+      "path": "humanizer.core/2.6.2",
+      "hashPath": "humanizer.core.2.6.2.nupkg.sha512"
+    },
+    "Hy.Modeller.Base/3.0.23": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-EcLWS354jphCThbS0gPnyWVAwITNJY2ohJzbF7mnCub6lif4CQI2KM+ot3dxgY3UlhU28rJmM2HcorNnSb5Vag==",
+      "path": "hy.modeller.base/3.0.23",
+      "hashPath": "hy.modeller.base.3.0.23.nupkg.sha512"
+    },
+    "McMaster.NETCore.Plugins.Sdk/0.2.4": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-mi4dKUNtZC5TcsLLAfv3k9P0bTdlfuXJtuPiWiDhxqTs+f0mao14DlZXL6GGZ9sWjL6aUBT++H9sJziTt2rpAw==",
+      "path": "mcmaster.netcore.plugins.sdk/0.2.4",
+      "hashPath": "mcmaster.netcore.plugins.sdk.0.2.4.nupkg.sha512"
+    },
+    "Microsoft.NETCore.Platforms/1.1.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-bLpT1f/SFlO1CzqXG12KnJzpZs6lv24uX2Rzi4Fmm0noJpNlnWRVryuO3yK18Ca04t/YHcO1e1Z0WDfjseqNzw==",
+      "path": "microsoft.netcore.platforms/1.1.0",
+      "hashPath": "microsoft.netcore.platforms.1.1.0.nupkg.sha512"
+    },
+    "NETStandard.Library/2.0.3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-R73gEjqCkI2Nw/IlN8QvcgPNklqQiPowp47JwvW0Bnp/RZnjN4UrJwEvWVJWRK1MsQ+HIfGe9i4aQlfK+ei9jA==",
+      "path": "netstandard.library/2.0.3",
+      "hashPath": "netstandard.library.2.0.3.nupkg.sha512"
+    },
+    "Newtonsoft.Json/12.0.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-rTK0s2EKlfHsQsH6Yx2smvcTCeyoDNgCW7FEYyV01drPlh2T243PR2DiDXqtC5N4GDm4Ma/lkxfW5a/4793vbA==",
+      "path": "newtonsoft.json/12.0.2",
+      "hashPath": "newtonsoft.json.12.0.2.nupkg.sha512"
+    },
+    "System.ComponentModel.Annotations/4.4.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-ToiYqSCioqhtspq2O/jYKtyTC/T0uwWHBTYlzCi6PRbSSHArN1IaRWeHffDamvms5sye5FDUWCfNZgubQpNRsA==",
+      "path": "system.componentmodel.annotations/4.4.1",
+      "hashPath": "system.componentmodel.annotations.4.4.1.nupkg.sha512"
+    }
+  }
+}
