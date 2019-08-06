@@ -15,11 +15,12 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Hy.Modeller.Base" Version="3.0.23" />
+    <PackageReference Include="Hy.Modeller.Base" Version="3.0.29" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\DomainClass.v1.0\DomainClass.v1.0.csproj" />
+    <ProjectReference Include="..\Enumeration.v1.0\Enumerator.v1.0.csproj" />
     <ProjectReference Include="..\Property.v1.0\Property.v1.0.csproj" />
   </ItemGroup>
 

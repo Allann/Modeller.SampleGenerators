@@ -2,8 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <RootNamespace>OverwriteHeader</RootNamespace>
-    <LangVersion>7.3</LangVersion>
+    <RootNamespace>Enumerator</RootNamespace>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -16,6 +15,12 @@
 
   <ItemGroup>
     <PackageReference Include="Hy.Modeller.Base" Version="3.0.29" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Header.v1.0\Header.v1.0.csproj" />
+    <ProjectReference Include="..\OverwriteHeader.v1.0\OverrideHeader.v1.0.csproj" />
+    <ProjectReference Include="..\Property.v1.0\Property.v1.0.csproj" />
   </ItemGroup>
 
 </Project>

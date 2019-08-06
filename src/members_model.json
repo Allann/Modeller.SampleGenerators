@@ -1,0 +1,288 @@
+{
+    "company": "FourMi",
+    "project": "Member",
+    "enumerations": [
+        {
+            "items":[
+                {"name":"Validate","display":"Validate","value":0},
+                {"name":"PaymentApproval","display":"Payment Approval","value":1},
+                {"name":"Payment","display":"Payment","value":2},
+                {"name":"Gift","display":"Gift","value":3},
+                {"name":"Time","display":"Time","value":4}
+            ]
+            ,"name":"MembershipChanges"
+        },
+        {
+            "items":[
+                {"name":"Never","display":"Never","value":0},
+                {"name":"Monthly","display":"Monthly","value":1},
+                {"name":"Quarterly","display":"Quarterly","value":2},
+                {"name":"BiAnnually","display":"BiAnnually","value":3},
+                {"name":"Annually","display":"Annually","value":4},
+                {"name":"Custom","display":"Custom","value":5}
+            ]
+            ,"name":"MembershipPeriods"
+        },
+        {
+            "items":[
+                {"name":"Individual","display":"Individual","value":0},
+                {"name":"BundleLimited","display":"Bundle Limited","value":1},
+                {"name":"Bundle","display":"Bundle","value":2}
+            ]
+            ,"name":"MembershipTypes"
+        },
+        {
+            "items":[
+                {"name":"Draft","display":"Draft","value":0},
+                {"name":"Pending","display":"Pending","value":1},
+                {"name":"Initial","display":"Initial","value":2},
+                {"name":"Normal","display":"Normal","value":3},
+                {"name":"LongTerm","display":"Long Term","value":4},
+                {"name":"Honorary","display":"Honorary","value":5},
+                {"name":"Lapsed","display":"Lapsed","value":6},
+                {"name":"Payment","display":"Payment","value":7}
+            ]
+            ,"name":"MembershipStates"
+        }
+    ],
+    "models": [
+        {
+            "key": {
+                "fields": [
+                    {
+                        "dataType": "Int32",
+                        "nullable": false,
+                        "name": "Id"
+                    }
+                ]
+            },
+            "fields": [
+                {
+                    "dataType": "Int32",
+                    "nullable": false,
+                    "name": "TenantId"
+                },
+                {
+                    "maxLength": 50,
+                    "nullable": false,
+                    "name": "FirstName"
+                },
+                {
+                    "maxLength": 50,
+                    "nullable": false,
+                    "name": "LastName"
+                },
+                {
+                    "maxLength": 256,
+                    "nullable": false,
+                    "businessKey": true,
+                    "name": "Email"
+                },
+                {
+                    "maxLength": 15,
+                    "name": "Phone"
+                },
+                {
+                    "dataType": "Int32",
+                    "name": "LevelId"
+                }
+            ],
+            "indexes": [],
+            "relationships": [],
+            "name": "Member"
+        },
+        {
+            "key": {
+                "fields": [
+                    {
+                        "dataType": "Int32",
+                        "nullable": false,
+                        "name": "Id"
+                    }
+                ]
+            },
+            "fields": [
+                {
+                    "maxLength": 50,
+                    "nullable": false,
+                    "name": "Status"
+                },
+                {
+                    "dataType": "Int32",
+                    "nullable": false,
+                    "name": "EndDate"
+                },
+                {
+                    "dataType": "Int32",
+                    "nullable": false,
+                    "name": "StartDate"
+                }
+            ],
+            "indexes": [],
+            "relationships": [
+                {
+                    "leftModel": "",
+                    "leftFields": [
+                        "Id"
+                    ],
+                    "leftType": "One",
+                    "rightModel": "Level",
+                    "rightFields": [
+                        ""
+                    ],
+                    "rightType": "Many",
+                    "linkTable": null
+                }
+            ],
+            "name": "Membership"
+        },
+        {
+            "key": {
+                "fields": [
+                    {
+                        "dataType": "Int32",
+                        "nullable": false,
+                        "name": "Id"
+                    }
+                ]
+            },
+            "fields": [
+                {
+                    "dataType": "Int32",
+                    "nullable": false,
+                    "name": "TenantId"
+                },
+                {
+                    "maxLength": 50,
+                    "nullable": false,
+                    "name": "Name"
+                },
+                {
+                    "maxLength": 20,
+                    "nullable": false,
+                    "name": "Type"
+                },
+                {
+                    "dataType": "Int32",
+                    "nullable": false,
+                    "name": "BundleLimit"
+                },
+                {
+                    "maxLength": 1000,
+                    "name": "Description"
+                },
+                {
+                    "precision": 2,
+                    "scale": 12,
+                    "dataType": "Decimal",
+                    "nullable": false,
+                    "name": "Fee"
+                },
+                {
+                    "dataType": "Bool",
+                    "nullable": false,
+                    "name": "IsTaxed"
+                },
+                {
+                    "dataType": "Bool",
+                    "nullable": false,
+                    "name": "IsPublic"
+                },
+                {
+                    "dataType": "Bool",
+                    "nullable": false,
+                    "name": "IsUpgradable"
+                },
+                {
+                    "dataType": "Int32",
+                    "name": "PaymentMethodId"
+                },
+                {
+                    "dataType": "Int32",
+                    "name": "PolicyId"
+                }
+            ],
+            "indexes": [],
+            "relationships": [
+                {
+                    "leftModel": "Level",
+                    "leftFields": [
+                        "Id"
+                    ],
+                    "leftType": "One",
+                    "rightModel": "Member",
+                    "rightFields": [
+                        "LevelId"
+                    ],
+                    "rightType": "Many",
+                    "linkTable": null
+                }
+            ],
+            "name": "Level"
+        },
+        {
+            "key": {
+                "fields": [
+                    {
+                        "dataType": "Int32",
+                        "nullable": false,
+                        "name": "Id"
+                    }
+                ]
+            },
+            "fields": [
+                {
+                    "maxLength": 50,
+                    "nullable": false,
+                    "name": "Name"
+                }
+            ],
+            "indexes": [],
+            "relationships": [
+                {
+                    "leftModel": "PaymentMethod",
+                    "leftFields": [
+                        "Id"
+                    ],
+                    "leftType": "One",
+                    "rightModel": "Level",
+                    "rightFields": [
+                        "PaymentMethodId"
+                    ],
+                    "rightType": "Many",
+                    "linkTable": null
+                }
+            ],
+            "name": "PaymentMethod"
+        },
+        {
+            "key": {
+                "fields": [
+                    {
+                        "dataType": "Int32",
+                        "nullable": false,
+                        "name": "Id"
+                    }
+                ]
+            },
+            "fields": [],
+            "indexes": [],
+            "relationships": [
+                {
+                    "leftModel": "Policy",
+                    "leftFields": [
+                        "Id"
+                    ],
+                    "leftType": "One",
+                    "rightModel": "Level",
+                    "rightFields": [
+                        "PolicyId"
+                    ],
+                    "rightType": "Many",
+                    "linkTable": null
+                }
+            ],
+            "name": "Policy"
+        }
+    ]
+}

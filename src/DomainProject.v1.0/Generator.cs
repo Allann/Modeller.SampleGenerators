@@ -27,6 +27,9 @@ namespace Domain
             foreach (var item in _module.Models)
                 project.AddFileGroup((IFileGroup)new DomainClass.Generator(Settings, _module, item).Create());
 
+            var result = new Enumerator.Generator(Settings, _module, null).Create() as IFileGroup;
+
+            project.AddFileGroup(result);
             return project;
         }
     }
