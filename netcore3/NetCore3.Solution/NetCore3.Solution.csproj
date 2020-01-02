@@ -1,0 +1,19 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <OutputPath>..\Generators\</OutputPath>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="..\..\src\Shared\Extensions.cs" Link="Extensions.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Hy.Modeller.Base" Version="3.0.29" />
+  </ItemGroup>
+
+</Project>
