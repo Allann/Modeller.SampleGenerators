@@ -1,4 +1,4 @@
-﻿using Hy.Modeller.GeneratorBase;
+﻿using Hy.Modeller.Generator;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -10,9 +10,9 @@ namespace ContractClass
         public GeneratorDetails() : base("1.0.0")
         { }
 
-        public override string Name => "Domain Class";
+        public override string Name => "ContractClass";
 
-        public override string Description => "Build a Domain class file group";
+        public override string Description => "Build a contract class file group";
 
         public override Type EntryPoint => typeof(Generator);
 

@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Text;
-using Hy.Modeller;
+using Hy.Modeller.Domain;
+using Hy.Modeller.Domain.Extensions;
+using Hy.Modeller.Generator;
 using Hy.Modeller.Interfaces;
-using Hy.Modeller.Models;
-using Hy.Modeller.Outputs;
 
 namespace Enumerator
 {
@@ -67,7 +67,7 @@ namespace Enumerator
             sb.i(1).al("}");
             sb.al("}");
 
-            return new File { Content = sb.ToString(), CanOverwrite = true, Name = _enumeration.Name + ".generated.cs" };
+            return new File(_enumeration.Name + ".generated.cs", sb.ToString(), canOverwrite: true);
         }
     }
 }

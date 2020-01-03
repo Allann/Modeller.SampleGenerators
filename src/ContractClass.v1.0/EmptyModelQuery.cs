@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Text;
+using Hy.Modeller.Domain;
+using Hy.Modeller.Generator;
 using Hy.Modeller.Interfaces;
-using Hy.Modeller.Models;
-using Hy.Modeller.Outputs;
 
 namespace ContractClass
 {
@@ -27,16 +27,16 @@ namespace ContractClass
 
             var sb = new StringBuilder();
             sb.al(((ISnippet)new Header.Generator(Settings, new GeneratorDetails()).Create()).Content);
-            sb.al($"using {_module.Namespace}.Contracts.v1.Responses;");
+            sb.al($"using {_module.Namespace}.Contracts.v1.Responses.{_model.Name.Plural.Value};");
             sb.al("using MediatR;");
             sb.b();
             sb.al($"namespace {_module.Namespace}.Contracts.v1.Queries.{_model.Name.Plural.Value}");
             sb.al("{");
-            sb.i(1).a($"public class {_model.Name}EmptyModelQuery : IRequest<{_model.Name}Response>");
+            sb.i(1).al($"public class {_model.Name}EmptyModelQuery : IRequest<{_model.Name}Response>");
             sb.i(1).al("{ }");
             sb.al("}");
 
-            return new File { Name = _model.Name + "EmptyModelQuery.cs", Path = $"Queries/{_model.Name.Plural.Value}", Content = sb.ToString() };
+            return new File(_model.Name + "EmptyModelQuery.cs", sb.ToString(), path: $"v1\\Queries\\{_model.Name.Plural.Value}");
         }
     }
 }

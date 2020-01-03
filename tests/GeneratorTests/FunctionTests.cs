@@ -1,13 +1,15 @@
-using Hy.Modeller;
-using Hy.Modeller.Core.Outputs;
+using Hy.Modeller.Domain;
+using Hy.Modeller.Domain.Extensions;
 using Hy.Modeller.Generator;
 using Hy.Modeller.Interfaces;
-using Hy.Modeller.Outputs;
+using System;
+using System.Text;
 using Microsoft.Extensions.Logging;
 using Moq;
-using System;
 using System.Collections.Generic;
 using Xunit;
+using Hy.Modeller.Loaders;
+using Hy.Modeller.Generator.Outputs;
 
 namespace GeneratorTests
 {
@@ -18,21 +20,22 @@ namespace GeneratorTests
         {
             var config = new GeneratorConfiguration
             {
-                GeneratorName = "DomainProject",
-                LocalFolder = "F:\\Repos\\Modeller.SampleGenerators\\src\\Generators",
-                Target="netstandard2.0",
-                OutputPath = "F:\\dev\\test\\members",
-                SourceModel = "F:\\dev\\members_model.json"
+                GeneratorName = "NetCore3Solution",
+                LocalFolder = "E:\\Repos\\Modeller.SampleGenerators\\src\\Generators",
+                Target = "netcoreapp2.2",
+                OutputPath = "e:\\dev\\test\\members",
+                SourceModel = "e:\\dev\\members_model.json"
             };
 
             var logger = new Mock<ILogger<IPackageService>>();
+            var loggerContext = new Mock<ILogger<IContext>>();
             var settingLoader = new JsonSettingsLoader();
             var moduleLoader = new JsonModuleLoader();
             var generatorLoader = new GeneratorLoader();
             var packageLoader = new PackageFileLoader();
             var packageService = new PackageService(packageLoader, logger.Object);
 
-            var context = new Context(config, settingLoader, moduleLoader, generatorLoader, packageService);
+            var context = new Context(settingLoader, moduleLoader, generatorLoader, packageService, loggerContext.Object);
 
             var loggerCG = new Mock<ILogger<ICodeGenerator>>();
             var loggerFW = new Mock<ILogger<FileWriter>>();
@@ -49,7 +52,7 @@ namespace GeneratorTests
             var outputStrategy = new OutputStrategy(list);
 
             var builder = new Builder(context, codeGenerator, outputStrategy, loggerB.Object);
-            builder.Create();
+            builder.Create(config);
         }
     }
 }

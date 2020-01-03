@@ -2,9 +2,9 @@
 
 internal static class Extensions
 {
-    internal static StringBuilder i(this StringBuilder sb, int value)
+    internal static StringBuilder i(this StringBuilder sb, int value, int spaces = 4)
     {
-        a(sb,new string(' ', value * 4));
+        a(sb,new string(' ', value * spaces));
         return sb;
     }
 

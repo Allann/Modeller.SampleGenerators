@@ -1,6 +1,6 @@
 ﻿using System;
+using Hy.Modeller.Generator;
 using Hy.Modeller.Interfaces;
-using Hy.Modeller.Outputs;
 
 namespace OverwriteHeader
 {
@@ -21,7 +21,7 @@ namespace OverwriteHeader
             var sb = new System.Text.StringBuilder();
             sb.al($"// Auto-generated using Hy.Modeller template '{_metadata.Name}' version {_metadata.Version}");
             sb.b();
-            sb.al($"// {new string('-',80)}");
+            sb.al($"// {new string('-', 80)}");
             sb.al("// WARNING: This file will be overwritten if re-generation is triggered.");
             sb.al($"// {new string('-', 80)}");
             return new Snippet(sb.ToString());

@@ -1,6 +1,7 @@
-﻿using Hy.Modeller.Interfaces;
-using Hy.Modeller.Models;
-using Hy.Modeller.Outputs;
+﻿using Hy.Modeller.Domain;
+using Hy.Modeller.Domain.Extensions;
+using Hy.Modeller.Generator;
+using Hy.Modeller.Interfaces;
 using System;
 using System.Text;
 
@@ -42,15 +43,11 @@ namespace ClassLibrary
             sb.i(1).al("}");
             sb.al("}");
 
-            var file = new File { Content = sb.ToString(), CanOverwrite = settings.SupportRegen };
             var filename = model.Name.ToString();
             if (settings.SupportRegen)
-            {
                 filename += ".generated";
-            }
             filename += ".cs";
-            file.Name = filename;
-            return file;
+            return new File(filename ,sb.ToString(), canOverwrite : settings.SupportRegen );
         }
     }
 }

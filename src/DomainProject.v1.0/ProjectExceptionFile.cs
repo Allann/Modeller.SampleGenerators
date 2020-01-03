@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Text;
+using Hy.Modeller.Domain;
+using Hy.Modeller.Generator;
 using Hy.Modeller.Interfaces;
-using Hy.Modeller.Models;
-using Hy.Modeller.Outputs;
 
 namespace Domain
 {
@@ -38,7 +38,7 @@ namespace Domain
             sb.i(1).al("}");
             sb.al("}");
 
-            return new File { Name = $"{_module.Project.Value}DomainException.cs", Path="Exceptions", Content = sb.ToString(), CanOverwrite = false };
+            return new File($"{_module.Project.Value}DomainException.cs", sb.ToString(), path: "Exceptions");
         }
     }
 }

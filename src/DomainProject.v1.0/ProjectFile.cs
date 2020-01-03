@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Text;
+using Hy.Modeller.Domain;
+using Hy.Modeller.Generator;
 using Hy.Modeller.Interfaces;
-using Hy.Modeller.Models;
-using Hy.Modeller.Outputs;
 
 namespace Domain
 {
@@ -46,7 +46,7 @@ namespace Domain
             sb.b();
             sb.al("</Project>");
 
-            var projectFile = new File { Name = project.Name + ".csproj", Content = sb.ToString(), CanOverwrite = false };
+            var projectFile = new File(project.Name + ".csproj", sb.ToString());
             files.AddFile(projectFile);
             return project;
         }

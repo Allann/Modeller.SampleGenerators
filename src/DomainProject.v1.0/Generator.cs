@@ -1,8 +1,7 @@
-﻿using DomainClass;
-using Hy.Modeller.Interfaces;
-using Hy.Modeller.Models;
-using System;
+﻿using System;
 using System.Linq;
+using Hy.Modeller.Domain;
+using Hy.Modeller.Interfaces;
 
 namespace Domain
 {

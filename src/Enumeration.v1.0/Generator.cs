@@ -1,7 +1,7 @@
 ﻿using System;
+using Hy.Modeller.Domain;
+using Hy.Modeller.Generator;
 using Hy.Modeller.Interfaces;
-using Hy.Modeller.Models;
-using Hy.Modeller.Outputs;
 
 namespace Enumerator
 {
@@ -32,9 +32,6 @@ namespace Enumerator
                 return new EnumerationClass(Settings, _module, _enumeration).Create();
         }
 
-        private void AddModelFiles(FileGroup files, Enumeration enumeration)
-        {
-            files.AddFile((IFile)new EnumerationClass(Settings, _module, enumeration).Create());
-        }
+        private void AddModelFiles(FileGroup files, Enumeration enumeration) => files.AddFile((IFile)new EnumerationClass(Settings, _module, enumeration).Create());
     }
 }

@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.2</TargetFramework>
-    <RootNamespace>Property</RootNamespace>
+    <RootNamespace>ContractClass</RootNamespace>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -10,11 +10,17 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Include="..\Shared\Extensions.cs" Link="Extensions.cs" />
+    <Compile Include="..\..\src\Shared\Extensions.cs" Link="Extensions.cs" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Hy.Modeller.Core" Version="2.1.31" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\Header.v1.0\Header.v1.0.csproj" />
+    <ProjectReference Include="..\..\src\OverwriteHeader.v1.0\OverrideHeader.v1.0.csproj" />
+    <ProjectReference Include="..\..\src\Property.v1.0\Property.v1.0.csproj" />
   </ItemGroup>
 
 </Project>

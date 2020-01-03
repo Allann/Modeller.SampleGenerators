@@ -1,10 +1,9 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
-    <RootNamespace>ContractClass</RootNamespace>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <RootNamespace>ContractProject</RootNamespace>
   </PropertyGroup>
-
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <OutputPath>..\Generators\</OutputPath>
@@ -15,13 +14,14 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Hy.Modeller.Base" Version="3.0.29" />
+    <PackageReference Include="Hy.Modeller.Core" Version="2.1.31" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\..\src\Header.v1.0\Header.v1.0.csproj" />
     <ProjectReference Include="..\..\src\OverwriteHeader.v1.0\OverrideHeader.v1.0.csproj" />
     <ProjectReference Include="..\..\src\Property.v1.0\Property.v1.0.csproj" />
+    <ProjectReference Include="..\ContractClass.v1.0\ContractClass.v1.0.csproj" />
   </ItemGroup>
 
 </Project>

@@ -1,6 +1,6 @@
 ﻿using System;
+using Hy.Modeller.Generator;
 using Hy.Modeller.Interfaces;
-using Hy.Modeller.Outputs;
 
 namespace Header
 {

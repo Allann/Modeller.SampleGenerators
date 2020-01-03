@@ -1,7 +1,9 @@
-﻿using System;
+﻿using Hy.Modeller.Domain;
+using Hy.Modeller.Domain.Extensions;
+using Hy.Modeller.Generator;
 using Hy.Modeller.Interfaces;
-using Hy.Modeller.Models;
-using Hy.Modeller.Outputs;
+using System;
+using System.Text;
 
 namespace DomainClass
 {

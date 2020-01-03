@@ -1,7 +1,7 @@
-﻿using Hy.Modeller;
+﻿using Hy.Modeller.Domain;
+using Hy.Modeller.Domain.Extensions;
+using Hy.Modeller.Generator;
 using Hy.Modeller.Interfaces;
-using Hy.Modeller.Models;
-using Hy.Modeller.Outputs;
 using System;
 using System.Linq;
 using System.Text;
@@ -63,7 +63,7 @@ namespace DomainClass
             sb.i(1).al("}");
             sb.al("}");
 
-            return new File { Name = _model.Name + ".cs", Content = sb.ToString() };
+            return new File(_model.Name + ".cs", sb.ToString() );
         }
     }
 }

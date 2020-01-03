@@ -4,14 +4,14 @@ using Hy.Modeller.Domain;
 using Hy.Modeller.Generator;
 using Hy.Modeller.Interfaces;
 
-namespace DomainClass
+namespace ContractClass
 {
-    public class DomainAction : IGenerator
+    public class CreateCommand : IGenerator
     {
         private readonly Module _module;
         private readonly Model _model;
 
-        public DomainAction(ISettings settings, Module module, Model model)
+        public CreateCommand(ISettings settings, Module module, Model model)
         {
             Settings = settings ?? throw new ArgumentNullException(nameof(settings));
             _module = module ?? throw new ArgumentNullException(nameof(module));
@@ -22,22 +22,25 @@ namespace DomainClass
 
         public IOutput Create()
         {
+            if (!Settings.SupportRegen)
+                return null;
+
             var sb = new StringBuilder();
             sb.al(((ISnippet)new Header.Generator(Settings, new GeneratorDetails()).Create()).Content);
+            sb.al($"using {_module.Namespace}.Contracts.v1.Responses;");
+            sb.al("using MediatR;");
             sb.al("using System;");
-            sb.al("using System.Collections.Generic;");
-            sb.al("using System.Linq;");
-            sb.al("using System.Text;");
             sb.b();
-            sb.al($"namespace {_module.Namespace}.Domain");
+            sb.al($"namespace {_module.Namespace}.Contracts.v1.Commands.{_model.Name.Plural.Value}");
             sb.al("{");
-            sb.i(1).al($"partial class {_model.Name}");
+            sb.i(1).al($"public class {_model.Name}CreateCommand : IRequest<CreatedResponse>");
             sb.i(1).al("{");
-            sb.i(2).al("//todo: Add domain actions here that change the state of a domain instance.");
+            foreach (var field in _model.Fields)
+                sb.al(((ISnippet)new Property.Generator(field).Create()).Content);
             sb.i(1).al("}");
             sb.al("}");
 
-            return new File(_model.Name + ".actions.cs", sb.ToString());
+            return new File(_model.Name + "CreateCommand.cs", sb.ToString(), path: $"v1\\Commands\\{_model.Name.Plural.Value}");
         }
     }
 }

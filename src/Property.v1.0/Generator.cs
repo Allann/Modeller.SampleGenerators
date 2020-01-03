@@ -1,7 +1,7 @@
-﻿using Hy.Modeller;
+﻿using Hy.Modeller.Domain;
+using Hy.Modeller.Domain.Extensions;
+using Hy.Modeller.Generator;
 using Hy.Modeller.Interfaces;
-using Hy.Modeller.Models;
-using Hy.Modeller.Outputs;
 using System;
 using System.Text;
 
@@ -17,7 +17,7 @@ namespace Property
         private readonly PropertyScope _setScope;
         private readonly bool _convertToLocalDates;
 
-        public Generator(Field field, int indent = 2, bool useDataAnnotations = false, bool useBackingField = false, PropertyScope getScope = PropertyScope.@public, PropertyScope setScope = PropertyScope.@private, bool convertToLocalDates = false)
+        public Generator(Field field, int indent = 2, bool useDataAnnotations = false, bool useBackingField = false, PropertyScope getScope = PropertyScope.@public, PropertyScope setScope = PropertyScope.@public, bool convertToLocalDates = false)
         {
             _field = field ?? throw new ArgumentNullException(nameof(field));
             if (indent < 1)
@@ -49,6 +49,9 @@ namespace Property
             }
             else
                 dt = _field.GetDataType(ShowNullable, GuidNullable);
+
+            if(ShowNullable && _field.DataType==DataTypes.String && _field.Nullable && !dt.EndsWith("?"))
+                dt += "?";
 
             var sb = new StringBuilder();
             if (_useBackingField)
@@ -93,13 +96,13 @@ namespace Property
             }
 
             var scopes = SetScopes();
-            sb.i(_indent).a($"{scopes.Item1}{dt} {_field.Name}");
+            sb.i(_indent).a($"{scopes.prop}{dt} {_field.Name}");
             if (_useBackingField)
             {
                 sb.b();
                 sb.i(_indent).al("{");
-                sb.i(_indent + 1).al($"{scopes.Item2}get => {_field.Name.Singular.ModuleVariable};");
-                sb.i(_indent + 1).al($"{scopes.Item3}set");
+                sb.i(_indent + 1).al($"{scopes.get}get => {_field.Name.Singular.ModuleVariable};");
+                sb.i(_indent + 1).al($"{scopes.set}set");
                 sb.i(_indent + 1).al("{");
                 sb.i(_indent + 2).al($"{_field.Name.Singular.ModuleVariable} = value;");
                 sb.i(_indent + 1).al("}");
@@ -108,14 +111,14 @@ namespace Property
             else
             {
                 sb.a(" {");
-                sb.a($"{scopes.Item2}get; ");
-                sb.a($"{scopes.Item3}set; ");
+                sb.a($"{scopes.get}get; ");
+                sb.a($"{scopes.set}set; ");
                 sb.al("}");
             }
             return new Snippet(sb.ToString());
         }
 
-        private (string, string, string) SetScopes()
+        private (string prop, string set, string get) SetScopes()
         {
             if (_setScope == _getScope)
                 return (_getScope.ToString(), "", "");
@@ -125,10 +128,7 @@ namespace Property
             var m = Math.Max(g, s);
             var p = GetScope(m);
             var other = Math.Min(g, s);
-            if (other == g)
-                return (p, "", GetScope(g));
-            else
-                return (p, GetScope(s), "");
+            return other == g ? (p, "", GetScope(g)) : (p, GetScope(s), "");
         }
 
         private string GetScope(int value)

@@ -1,7 +1,7 @@
 ﻿using System;
+using Hy.Modeller.Domain;
+using Hy.Modeller.Generator;
 using Hy.Modeller.Interfaces;
-using Hy.Modeller.Models;
-using Hy.Modeller.Outputs;
 
 namespace ClassLibrary
 {

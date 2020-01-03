@@ -1,27 +1,24 @@
-﻿using Hy.Modeller.GeneratorBase;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using Hy.Modeller.Generator;
 
-namespace NetCore3.Solution
+namespace ContractProject
 {
     public class GeneratorDetails : MetadataBase
     {
         public GeneratorDetails() : base("1.0.0")
         { }
 
-        public override string Name => "NET Core 3 Solution";
+        public override string Name => "Contract Project";
 
-        public override string Description => "Build a netcore 3.x solution";
+        public override string Description => "Build a Contract project";
 
         public override Type EntryPoint => typeof(Generator);
 
         public override IEnumerable<Type> SubGenerators => new Collection<Type>()
         {
-            typeof(DomainClass.Generator),
-            typeof(Header.Generator),
-            typeof(Property.Generator)
+            typeof(ContractClass.Generator)
         };
     }
-
 }
